@@ -13,7 +13,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: A event received
-        run: |
-          echo "payload Foo '${{ github.event.client_payload.foo }}' '${{ github.event.branch }}'"
-          
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: provisioning/playbook.yml
+          # Optional, directory where playbooks live
+          directory: ./provisioning
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          vault_password: ${{secrets.VAULT_PASSWORD}}
+          options: |
+            --inventory provisioning/environments/prod
+
