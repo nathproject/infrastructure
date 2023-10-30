@@ -23,4 +23,5 @@ jobs:
           vault_password: ${{secrets.VAULT_PASSWORD}}
           options: |
             --inventory environments/prod
+            --tags container
 
