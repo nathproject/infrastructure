@@ -1,0 +1,4 @@
+---
+
+- include_tasks: networks.yml
+- include_tasks: containers.yml

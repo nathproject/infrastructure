@@ -1,0 +1,8 @@
+---
+- name: Create the python venv
+  command:
+    cmd: "{{ python_command }} -m venv {{ venv_path }}"
+    creates: "{{ venv_path }}"
+  tags: [ 'never', 'initial' ]
+
+

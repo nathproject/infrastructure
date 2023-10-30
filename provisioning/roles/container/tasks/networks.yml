@@ -1,0 +1,13 @@
+---
+
+- name: Create Docker network
+  docker_network:
+    name: "{{ docker_network_name }}"
+    ipam_config:
+      - subnet: '172.3.26.0/16'
+        gateway: "{{ docker_network_gateway_ip }}"
+        iprange: '192.168.1.0/24'
+    driver_options:
+      com.docker.network.bridge.name: "br-hbr2"
+  when: create_default_network | bool
+

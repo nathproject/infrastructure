@@ -1,0 +1,17 @@
+---
+
+- name: Install required system packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ system_package }}"
+  become: true
+  tags: ['initial']
+
+# Venv should be created manually on the remote or in a different playbook bootstrap
+- include_tasks: venv.yml
+  tags: ['never', 'initial']
+
+- include_tasks: pip.yml
+- include_tasks: requirements.yml

@@ -1,0 +1,7 @@
+---
+
+####################
+###### DOCKER ######
+####################
+
+docker_registry_url: "{{vault.DOCKER_REGISTRY_URL}}"

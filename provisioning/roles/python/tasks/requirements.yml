@@ -1,0 +1,20 @@
+---
+
+- name: Insure that the requirements dir exist
+  ansible.builtin.file:
+    path: "{{ requirements_path }}"
+    state: directory
+
+- name: Add the requirements.txt to remote
+  ansible.builtin.template:
+    src: requirements.txt.j2
+    dest: "{{ requirements_path }}/requirements.txt"
+
+- name: Install requirements
+  pip:
+    requirements: "{{ requirements_path }}/requirements.txt"
+#- name: Install specified python requirements
+#  ansible.builtin.pip:
+#    name: "docker-compose"
+#    extra_args: "--no-build-isolation"
+#  when: env == "local"

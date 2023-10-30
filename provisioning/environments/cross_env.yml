@@ -1,0 +1,17 @@
+---
+
+user_home_path: "/home/{{ ansible_user }}"
+
+
+####################
+###### PYTHON ######
+####################
+venv_path: "{{ user_home_path }}/ansible_env"
+# comment the following only for the initial script
+ansible_python_interpreter: "{{ venv_path }}/bin/python"
+
+####################
+###### DOCKER ######
+####################
+docker_network_gateway_ip: "172.3.26.1"
+docker_network_name: "aatariak_private_network"

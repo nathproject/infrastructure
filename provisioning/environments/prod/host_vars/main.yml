@@ -1,0 +1,19 @@
+---
+
+# docker containers
+containers:
+  - name: nath-django
+    image: "{{ docker_registry_url }}/nat-rest:main"
+    ports:
+      - 80:8000
+    env:
+      SQL_ENGINE: "django.db.backends.postgresql"
+      SQL_DATABASE: "{{vault.SQL_DATABASE}}"
+      SQL_USER: "{{vault.SQL_USER}}"
+      SQL_PASSWORD: "{{vault.SQL_PASSWORD}}"
+      SQL_HOST: "{{vault.SQL_HOST}}"
+      SQL_PORT: "5432"
+      DJANGO_ALLOWED_HOSTS: "{{ansible_host}}"
+      SECRET_KEY: "django-insecure-w&dqzx7*r89*e1(zr6mme$e_3(dika5p#v07@3d4e5hw2ua!r*"
+      DEBUG: "1"
+

@@ -1,0 +1,13 @@
+---
+
+python_command: python3.10
+venv_path: "{{ user_home_path }}/ansible_env"
+venv_executable: "{{ venv_path }}/bin/python"
+requirements_path: "{{ user_home_path }}/ansible_files"
+
+system_package:
+  - python3.10
+  - build-essential
+  - python3.10-venv
+  - python3-dev
+  - libpq-dev

@@ -1,0 +1,18 @@
+---
+
+- name: Start Containers
+  community.docker.docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.image }}"
+    command: "{{ item.command | default(omit) }}"
+    published_ports: "{{ item.ports | default(omit) }}"
+    env: "{{ item.env | default(omit) }}"
+    pull: true # to force pulling image if updated
+    recreate: true
+    volumes: "{{ item.volumes | default(omit) }}"
+  loop: "{{ containers }}"
+  register: containers_creation_output
+
+#- name: Display the output for the containers
+#  debug:
+#    var: containers_creation_output
