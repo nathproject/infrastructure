@@ -2,8 +2,12 @@ name: Nath CD
 run-name: deploying project with infra
 
 on:
-  repository_dispatch:
-    types: [deploy_project]
+  workflow_dispatch:
+    repository_dispatch:
+      types: [deploy_project]
+    push:
+      branches:
+        - main
 
 jobs:
   deploy:
