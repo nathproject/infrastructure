@@ -2,16 +2,13 @@ name: Nath CD
 run-name: deploying project with infra
 
 on:
-  workflow_dispatch:
-    repository_dispatch:
-      types: [deploy_project]
-    push:
-      branches:
-        - main
+  repository_dispatch:
+    types: [deploy_project]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event.branch == 'main'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
