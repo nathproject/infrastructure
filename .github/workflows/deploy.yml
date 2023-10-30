@@ -16,11 +16,11 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: provisioning/playbook.yml
+          playbook: playbook.yml
           # Optional, directory where playbooks live
           directory: ./provisioning
           key: ${{secrets.SSH_PRIVATE_KEY}}
           vault_password: ${{secrets.VAULT_PASSWORD}}
           options: |
-            --inventory provisioning/environments/prod
+            --inventory environments/prod
 
