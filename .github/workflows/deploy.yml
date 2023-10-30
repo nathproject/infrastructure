@@ -1,0 +1,17 @@
+name: Nath CD
+run-name: deploying project with infra
+
+on:
+  repository_dispatch:
+    types: [deploy_project]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: A event received
+        run: |
+          echo "payload Foo '${{ github.event.client_payload.foo }}'"
